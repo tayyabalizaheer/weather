@@ -5,8 +5,13 @@ export default async function handler(req, res) {
     try {
         const { q } = req.query;
         if (req.method === 'GET') {
-            // var current = await get(q);
-            return  res.status(200).json(sampleData)
+            var currentForcast ;
+            if(q && q.length > 0){
+                currentForcast = await get(q);
+            }else{
+                currentForcast = sampleData;
+            }
+            return  res.status(200).json(currentForcast)
         } else {
             return res.status(500).json({ error: 'Un-supported Method' })
         }

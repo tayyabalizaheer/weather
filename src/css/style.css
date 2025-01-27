@@ -119,6 +119,12 @@ h1{
 	font-weight: 500;
 	text-transform: capitalize;
 }
+.main-icon .sunny{
+	margin-top: 3rem;
+}
+.moon-icon{
+	font-size: 40px;
+}
 .icon-div{
 	min-height: 100px;
 }

@@ -11,7 +11,7 @@ function Icon({status="sunny",icon=""}) {
     }
     else if( status.trim() =="Clear" ){
         renderHTML = (
-            <div className="fas fa-moon"></div>
+            <div className="fas fa-moon moon-icon fa-lg mt-4"></div>
     );
     }
     else if(status =="Partly cloudy" || status =="Cloudy" ){

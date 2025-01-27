@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css'; // Basic Swiper styles
 import { useSelector } from 'react-redux';
-import {formatTime} from "../../utils/time";
+import {formatDate, formatTime} from "../../utils/time";
 import Icon from '../weather/Icon';
 
 function Main() {
@@ -58,21 +58,47 @@ function Main() {
                             pagination={{ clickable: false }} // Enables pagination bullets
                             // autoplay={{ delay: 3000, disableOnInteraction: false }} // Autoplay settings
                             // loop={true} 
+                            breakpoints={{
+                                // when the window width is >= 320px
+                                320: {
+                                  slidesPerView: 3, // Show 1 slide
+                                  spaceBetween: 10, // Space between slides
+                                },
+                                // when the window width is >= 768px
+                                768: {
+                                  slidesPerView: 3, // Show 3 slides
+                                  spaceBetween: 15, // Space between slides
+                                },
+                                // when the window width is >= 1024px
+                                1024: {
+                                  slidesPerView: 6, // Show 6 slides
+                                  spaceBetween: 20, // Space between slides
+                                },
+                            }}
                             >
                                 {
-                                hourly ? hourly.map((f) => {
+                                hourly ? hourly.map((f,index) => {
                                     if(f.time ){
                                         return ( // Explicitly return the JSX
                                             <SwiperSlide key={f.time}> 
                                                 <div className="live-weather text-center">
-                                                    <h5> Now </h5>
-                                                    <div className='icon-div'>
-                                                    {f.condition.text}
+                                                    <h5>
+                                                        {
+                                                                index === 0 ? (
+                                                                    "Now"
+                                                                ) : (
+                                                                    <>{formatTime(f.time)+" "}</>
+                                                                )
+                                                        }
+                                                          
+                                                    </h5>
+                                                    <div className='icon-div main-icon'>
+                                                    {/* {f.condition.text} */}
                                                     <Icon status={f.condition.text} icon={f.condition.icon}></Icon>
                                                     </div>
                                                     <div className="mintem05">
-                                                    <h4 className="my-0"> {f.temp_c} <sup>0</sup> </h4>
-                                                    <h4 className="my-2"> 29 <sup>0</sup> </h4>
+                                                        <h4 className="my-0"> {f.temp_c} <sup>0</sup> </h4>
+                                                        <h4 className="my-2"> 29 <sup>0</sup> </h4>
                                                     </div>
                                                     <div className="readfeel d-inline-block w-100">
                                                     <h5>Real Feel
