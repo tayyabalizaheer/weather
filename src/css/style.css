@@ -119,11 +119,40 @@ h1{
 	font-weight: 500;
 	text-transform: capitalize;
 }
+.main-detail{
+	color: white;
+	justify-content: space-between;
+	text-shadow: 1px 2px 8px #000;
+	border-bottom: 1px solid #ffffff12;
+	margin-bottom: 2px;
+}
+.main-detail-h{
+	padding: 0px 5px;
+	font-size: 18px;
+
+}
+.main-detail-v{
+	padding: 0px 5px;
+	font-weight: bold;
+	font-size: 20px;
+}
+.main-hourly{
+	color: white;
+	justify-content: space-between;
+	padding: 0px 5px;
+}
+.main-hourly-h{
+	font-size: 12px
+}
+.main-hourly-v{
+	font-size: 14px
+}
 .main-icon .sunny{
 	margin-top: 3rem;
 }
 .moon-icon{
 	font-size: 40px;
+	color: white;
 }
 .icon-div{
 	min-height: 100px;
@@ -234,7 +263,8 @@ header{
 }
 
 .banner-part1{
-	background: url(../images/pexels-nextvoyage-895549.jpg) no-repeat;
+	background: url(../images/main-bg.png) no-repeat;
+	background-color: #000;
 	width: 100%;
 	background-size: cover;
 	min-height:650px;
@@ -1827,6 +1857,7 @@ footer p{
 
   
 .banner-part1 h1{
+	text-shadow: 1px 2px 8px #000;
     font-size: 80px;
     color: #fff;
     font-family: 'Renner_400Book';

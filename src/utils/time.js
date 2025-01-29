@@ -11,6 +11,21 @@ export function formatTime(dateString) {
     const formattedTime = date.toLocaleTimeString('en-US', options);
     return formattedTime
 }
+
+export function formatTimeWithDay(dateString) {
+    const date = new Date(dateString);
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const day = days[date.getDay()];
+    // Format to 12-hour time
+    const options = {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+    };
+
+    const formattedTime = date.toLocaleTimeString('en-US', options);
+    return `${day}, ${formattedTime}`
+}
 export function formatDayDate(dateString) {
     const date = new Date(dateString);
     const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];

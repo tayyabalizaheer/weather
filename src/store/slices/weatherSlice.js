@@ -1,3 +1,4 @@
+import { processHourlydata } from '@/utils/weather';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -14,11 +15,12 @@ const weatherSlice = createSlice({
     setData: (state, action) => {
       state.data = action.payload;
       state.weekly = action.payload?.forecast?.forecastday.slice(0,7)??null;
-      state.hourly = action.payload?.forecast?.forecastday[0]?.hour??null;
+      state.hourly = processHourlydata(action.payload);
     },
     setLoading: (state, action) => {
         state.loading = action.payload;
     }
+   
   },
 });
 

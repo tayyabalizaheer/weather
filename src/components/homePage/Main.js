@@ -3,8 +3,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css'; // Basic Swiper styles
 import { useSelector } from 'react-redux';
-import {formatDate, formatTime} from "../../utils/time";
+import {formatDate, formatTime, formatTimeWithDay} from "../../utils/time";
 import Icon from '../weather/Icon';
+import { calculateAirQualityIndex } from '@/utils/weather';
 
 function Main() {
     const {data,hourly,loading} = useSelector((state) => state.weather);
@@ -29,7 +30,7 @@ function Main() {
                                         <div className="partly_cloudy__sun"></div>
                                         <div className="partly_cloudy__cloud"></div>
                                     </div>
-                                    <h1 className="mb-2 ms-3"> {data.current.temp_c}   <sup>0 </sup>
+                                    <h1 className="mb-2 ms-3"> {data.current.temp_c} <small> °C</small>
                                         
                                     </h1>
                                     </div>
@@ -43,6 +44,47 @@ function Main() {
                                         </h2>
                                     </div>
                                     
+                                </div>
+                            </div>
+                            <div className='col-12'>
+                                <div className='row'>
+                                    <div className='col-12 col-lg-4 d-flex main-detail'>
+                                        <span className='me-2 main-detail-h'>Feel Likes</span>
+                                        <span className='main-detail-v'>{data.current.feelslike_c} <small> °C</small></span>
+                                    </div>
+                                    <div className='col-12 col-lg-4 d-flex main-detail'>
+                                        <span className='me-2 main-detail-h'>Wind</span>
+                                        <span className='main-detail-v'>{data.current.wind_dir} {data.current.wind_kph} km/h</span>
+                                    </div>
+                                    <div className='col-12 col-lg-4 d-flex main-detail'>
+                                        <span className='me-2 main-detail-h'>Wind Gusts</span>
+                                        <span className='main-detail-v'> {data.current.gust_kph} km/h</span>
+                                    </div>
+                                    <div className='col-12 col-lg-4 d-flex main-detail'>
+                                        <span className='me-2 main-detail-h'>Humidity</span>
+                                        <span className='main-detail-v'>{data.current.humidity}%</span>
+                                    </div>
+                                    <div className='col-12 col-lg-4 d-flex main-detail'>
+                                        <span className='me-2 main-detail-h'>Air Quality</span>
+                                        <span className='main-detail-v'>{calculateAirQualityIndex(data.current.air_quality)}</span>
+                                    </div>
+                                    <div className='col-12 col-lg-4 d-flex main-detail'>
+                                        <span className='me-2 main-detail-h'>Dew Points</span>
+                                        <span className='main-detail-v'>{data.current.dewpoint_c} <small> °C</small> </span>
+                                    </div>
+
+                                    <div className='col-12 col-lg-4 d-flex main-detail'>
+                                        <span className='me-2 main-detail-h'>Visibility</span>
+                                        <span className='main-detail-v'>{data.current.vis_km} <small> km</small> </span>
+                                    </div>
+                                    <div className='col-12 col-lg-4 d-flex main-detail'>
+                                        <span className='me-2 main-detail-h'>Cloud Cover</span>
+                                        <span className='main-detail-v'>{data.current.cloud} %</span>
+                                    </div>
+                                    <div className='col-12 col-lg-4 d-flex main-detail'>
+                                        <span className='me-2 main-detail-h'>UV Index</span>
+                                        <span className='main-detail-v'>{data.current.uv} </span>
+                                    </div>
                                 </div>
                             </div>
                         
@@ -61,7 +103,7 @@ function Main() {
                             breakpoints={{
                                 // when the window width is >= 320px
                                 320: {
-                                  slidesPerView: 3, // Show 1 slide
+                                  slidesPerView: 2, // Show 1 slide
                                   spaceBetween: 10, // Space between slides
                                 },
                                 // when the window width is >= 768px
@@ -83,26 +125,20 @@ function Main() {
                                             <SwiperSlide key={f.time}> 
                                                 <div className="live-weather text-center">
                                                     <h5>
-                                                        {
-                                                                index === 0 ? (
-                                                                    "Now"
-                                                                ) : (
-                                                                    <>{formatTime(f.time)+" "}</>
-                                                                )
-                                                        }
-                                                          
+                                                    {formatTimeWithDay(f.time)+" "}
                                                     </h5>
                                                     <div className='icon-div main-icon'>
                                                     {/* {f.condition.text} */}
                                                     <Icon status={f.condition.text} icon={f.condition.icon}></Icon>
                                                     </div>
                                                     <div className="mintem05">
-                                                        <h4 className="my-0"> {f.temp_c} <sup>0</sup> </h4>
-                                                        <h4 className="my-2"> 29 <sup>0</sup> </h4>
+                                                        <h4 className="my-0"> {f.temp_c} <small>{f.feelslike_c}</small>  °C </h4>
                                                     </div>
                                                     <div className="readfeel d-inline-block w-100">
-                                                    <h5>Real Feel
-                                                        <span className="d-block">{f.feelslike_c}  <sup>0</sup></span></h5>
+                                                        <div className='d-flex main-hourly'><span className='main-hourly-h'>Precipitation</span> <span className='main-hourly-v'>{f.precip_mm}%</span></div>
+                                                        <div className='d-flex main-hourly'><span className='main-hourly-h'>Wind</span> <span className='main-hourly-v'>{f.wind_dir} {f.wind_kph} km/h</span></div>
+                                                        <div className='d-flex main-hourly'><span className='main-hourly-h'>Air Qaulity</span> <span className='main-hourly-v'>{calculateAirQualityIndex(f.air_quality)}</span></div>
+                                                        
                                                     </div>
                                                 </div> 
                                                 
