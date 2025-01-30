@@ -147,15 +147,19 @@ h1{
 .main-hourly-v{
 	font-size: 14px
 }
-.main-icon .sunny{
-	margin-top: 3rem;
-}
+
 .moon-icon{
 	font-size: 40px;
 	color: white;
 }
+.main-icon .moon-icon{
+	font-size: 70px;
+}
 .icon-div{
-	min-height: 100px;
+	min-height: 150px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 .weather_status img{
 	object-fit: contain;
@@ -723,13 +727,33 @@ header{
 
 .sunny {
 	position: absolute;
-	top:5px;
-	left: 10px;
+	top:0px;
+	left: 0px;
 	width: 5rem;
 	height: 5rem;
 	margin-top: 4rem;
   }
-  
+  .main-icon .sunny{
+	top: 10px;
+    left: 40px;
+  }
+  .only_sunny:before {
+	content: "";
+	position: absolute;
+	height: 80%;
+	width: 80%;
+	top: 8%;
+	right: 5%;
+	border-radius: 50%;
+	z-index: 1;
+	background-color: #f1c40f;
+	background-image: radial-gradient(#f1c40f, #f39c12);
+	box-shadow: 0 0 25px #917508;
+  }
+  .rainy .only_sunny:before{
+	margin-top: -10px;
+	margin-left: -20px;
+  }
   .sunny:before,
   .partly_cloudy__sun:before {
 	content: "";
@@ -1978,7 +2002,7 @@ footer p{
     display: grid;
     align-content: center;
     width: 100%;
-    height: 279px;
+    height: 300px;
     border-radius: 8px;
     margin: 20px 0;
     backdrop-filter: blur(30px);
@@ -2516,5 +2540,21 @@ button.close-menu svg{
 
 .login-modal-pn {
     /* background: #f3f3f3; */
-    padding: 10px 40px 30px 40px;
+    padding: 40px 10px 30px 10px;
+}
+.search-list{
+	list-style: none;
+	padding: 0;
+	max-height: 500px;
+	overflow-y: auto;
+}
+.search-item{
+	padding: 8px;
+	cursor: pointer;
+	border-bottom: 2px solid #ddd;
+}
+.search-loading{
+	display: flex;
+	justify-content: center;
+	color: #1ab5ed;
 }

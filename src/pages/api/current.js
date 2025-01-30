@@ -3,9 +3,9 @@ import appConfig from"./config.json";
 import sampleData from"./sample.json";
 export default async function handler(req, res) {
     try {
-        const forwarded = req.headers['x-forwarded-for'];
-        const clientIp = forwarded ? forwarded.split(',')[0] : req.socket.remoteAddress;
-        console.log(clientIp,req.socket.remoteAddress);
+        // const forwarded = req.headers['x-forwarded-for'];
+        // const clientIp = forwarded ? forwarded.split(',')[0] : req.socket.remoteAddress;
+        // console.log(clientIp,req.socket.remoteAddress);
         const { q } = req.query;
         if (req.method === 'GET') {
             var currentForcast ;

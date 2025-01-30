@@ -8,7 +8,7 @@ import Icon from '../weather/Icon';
 import { calculateAirQualityIndex } from '@/utils/weather';
 
 function Main() {
-    const {data,hourly,loading} = useSelector((state) => state.weather);
+  const {data,hourly,loading} = useSelector((state) => state.weather);
 
   return (
     <section className="float-start w-100 banner-part1">
@@ -16,6 +16,7 @@ function Main() {
             data ?
             <div className="container">
                 <div className="row top-part-banner1 align-items-center">
+                   
                     <div className="col-12">
                         <div className='row'>
                             <div className='col-lg-4 col-md-6 col-12'>
@@ -137,7 +138,12 @@ function Main() {
                                                     <div className="readfeel d-inline-block w-100">
                                                         <div className='d-flex main-hourly'><span className='main-hourly-h'>Precipitation</span> <span className='main-hourly-v'>{f.precip_mm}%</span></div>
                                                         <div className='d-flex main-hourly'><span className='main-hourly-h'>Wind</span> <span className='main-hourly-v'>{f.wind_dir} {f.wind_kph} km/h</span></div>
-                                                        <div className='d-flex main-hourly'><span className='main-hourly-h'>Air Qaulity</span> <span className='main-hourly-v'>{calculateAirQualityIndex(f.air_quality)}</span></div>
+                                                        {
+                                                            f.air_quality && (
+                                                                <div className='d-flex main-hourly'><span className='main-hourly-h'>Air Qaulity</span> <span className='main-hourly-v'>{calculateAirQualityIndex(f.air_quality)}</span></div>
+                                                            )
+                                                        }
+                                                        
                                                         
                                                     </div>
                                                 </div> 
@@ -156,6 +162,7 @@ function Main() {
                         </div>
                     </div>
                 </div>
+                
             </div>
             :
             <>loading..</>

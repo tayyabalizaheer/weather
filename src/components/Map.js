@@ -21,7 +21,7 @@ function Map() {
             </div>
 
         </section>
-
+        
         <section className="body-part float-start w-100">
         
             <div className="new-page-toal map-page-total">

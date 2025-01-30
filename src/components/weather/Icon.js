@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Icon({status="sunny",icon=""}) {
-
+    status = status.trim();
     var renderHTML = ""
 
     if(status=="Sunny" ){
@@ -11,10 +11,10 @@ function Icon({status="sunny",icon=""}) {
     }
     else if( status.trim() =="Clear" ){
         renderHTML = (
-            <div className="fas fa-moon moon-icon fa-lg mt-4"></div>
+            <div className="fas fa-moon moon-icon fa-lg"></div>
     );
     }
-    else if(status =="Partly cloudy" || status =="Cloudy" ){
+    else if(status.trim() =="Partly Cloudy"  ){
         renderHTML = (
             <div className="partly_cloudy">
                     <div className="partly_cloudy__sun"></div>
@@ -22,10 +22,12 @@ function Icon({status="sunny",icon=""}) {
             </div>
         );
     }
-    else if( status =="Patchy rain possible" 
-        || status =="Patchy freezing drizzle possible"  
-        || status =="Light drizzle"  
-        || status =="Patchy light rain"  
+    else if( status =="Cloudy" ){
+        renderHTML = (
+            <div className="cloudy"></div>
+        );
+    }
+    else if( status =="Light drizzle"  
         || status =="Freezing drizzle"  
         || status =="Moderate rain"  
         || status =="Light rain"  
@@ -33,9 +35,23 @@ function Icon({status="sunny",icon=""}) {
         || status =="Moderate or heavy freezing rain"  
         || status =="Light freezing rain"  
         || status =="Moderate rain at times"  
+        || status =="Thundery outbreaks in nearby"  
+    ){
+        renderHTML = (
+            <div className="rainy">
+                <div className="rainy__cloud"></div>
+                <div className="rainy__rain"></div>
+            </div>
+        );
+    }
+    else if( status =="Patchy rain possible" 
+        || status =="Patchy freezing drizzle possible"  
+        || status =="Patchy light rain"  
+        || status =="Patchy rain nearby"  
         || status =="Patchy light drizzle"){
         renderHTML = (
             <div className="rainy">
+                <div className="only_sunny"></div>
                 <div className="rainy__cloud"></div>
                 <div className="rainy__rain"></div>
             </div>
