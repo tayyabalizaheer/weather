@@ -9,7 +9,7 @@ function World() {
             <div className="col-lg-10 mx-auto mt-5">
                 <ul className="list-unstyled p-0 m-0">
                   <li>
-                    <Link href="/  Pakistan" className="comon-fom-st"> 
+                    <Link href="/Pakistan" className="comon-fom-st"> 
                       <figure>
                           <img src="images/pak.png" alt="aus"/>
                       </figure>
@@ -18,7 +18,7 @@ function World() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/  Australia" className="comon-fom-st"> 
+                    <Link href="/Australia" className="comon-fom-st"> 
                       <figure>
                           <img src="images/aus.jpg" alt="aus"/>
                       </figure>
@@ -133,15 +133,6 @@ function World() {
                     </Link>
                   </li>
 
-                  <li>
-                    <Link href="/New" className="comon-fom-st"> 
-                      <figure>
-                          <img src="images/uk.jpg" alt="aus"/>
-                      </figure>
-                      New York
-                        <i className="fas fa-arrow-right"></i>
-                    </Link>
-                  </li>
 
 
                   <li>
@@ -168,7 +159,7 @@ function World() {
                   <li>
                     <Link href="/Dubai" className="comon-fom-st"> 
                       <figure>
-                          <img src="images/urb.jpg" alt="aus"/>
+                          <img src="images/arb.jpg" alt="aus"/>
                       </figure>
                       Dubai
                         <i className="fas fa-arrow-right"></i>
@@ -176,11 +167,11 @@ function World() {
                   </li>
 
                   <li>
-                    <Link href="/Afganistan" className="comon-fom-st"> 
+                    <Link href="/Saudia Arabia" className="comon-fom-st"> 
                       <figure>
-                          <img src="images/arb.jpg" alt="aus"/>
+                          <img src="images/urb.jpg" alt="aus"/>
                       </figure>
-                      Afganistan
+                      Saudia Arabia
                         <i className="fas fa-arrow-right"></i>
                     </Link>
                   </li>
@@ -201,7 +192,7 @@ function World() {
 
                 </ul>
             </div>
-            <a href="#" className="btn explore-btn mt-4"> Explore All locations </a>
+            {/* <a href="#" className="btn explore-btn mt-4"> Explore All locations </a> */}
         </div>
     </div>
   )
