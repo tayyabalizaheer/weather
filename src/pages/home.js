@@ -9,12 +9,16 @@ const Main = dynamic(() => import('@/components/homePage/Main'), {  ssr: false, 
 const Recent = dynamic(() => import('@/components/homePage/Recent'), {  ssr: false, });
 const Daily = dynamic(() => import('@/components/homePage/Daily'), {  ssr: false, });
 const World = dynamic(() => import('@/components/homePage/World'), {  ssr: false, });
+const Loading = dynamic(() => import('@/components/Loading'), {  ssr: false, });
 
 function Home({slug}) {
     const dispatch = useDispatch();
   const {selectedlocation} = useSelector((state) => state.location);
+  const {loading} = useSelector((state) => state.weather);
 
   useEffect(() => {
+    console.log("loadingggggggggggggg.......",loading);
+    
     if(selectedlocation||slug){
       fetchData(); // Call the fetch function
     }
@@ -37,19 +41,29 @@ function Home({slug}) {
       const result = await response.json(); // Parse JSON data
       console.log(result);
       dispatch(setData(result)); // Update data state
+      dispatch(setLoading(false));
     } catch (err) {
       console.error(err);
-      setLoading(false); // Set loading to false
+      dispatch(setLoading(false));
+
     } 
   };
   return (
     <div>
-        <Main></Main>
-        <section className="body-part float-start w-100">
-            <Daily></Daily>
-            <Recent></Recent>
-            <World></World>
-        </section>
+         {!loading ? <Main /> : <Loading type="container" />}
+        
+         <section className="body-part float-start w-100">
+          {!loading ? (
+            <>
+              <Daily />
+             
+            </>
+          ) : (
+            <Loading  type="grid" />
+          )}
+           <Recent />
+           <World />
+          </section>
     </div>
   )
 }

@@ -42,7 +42,7 @@ function Daily() {
                             {
                                 
                                 
-                                weekly ? weekly.map((f) => {
+                                weekly && weekly.map((f) => {
                                     return ( // Explicitly return the JSX
                                         <SwiperSlide key={f.date}> 
                                             <div className="col">
@@ -55,7 +55,7 @@ function Daily() {
                                         </SwiperSlide>
                                     );
                                 })
-                                : <>loading..</>
+                               
                             }
                                 
             </Swiper>                 
@@ -67,7 +67,7 @@ function Daily() {
         <div className="all-forcuset mt-5">
           <ul className="nav nav-tabs" id="myTab" role="tablist">
           {
-                weekly ? weekly.map((f,index) => {
+                weekly && weekly.map((f,index) => {
                     return ( // Explicitly return the JSX
                         <li key={`trehg${index}`} className="nav-item" role="presentation">
                             <button className={`nav-link ${index==0?"active":""}`} id={`home-tab-${index}`} data-bs-toggle="tab" data-bs-target={`#home-${index}`} type="button" role="tab" aria-controls="home" aria-selected="true">
@@ -84,14 +84,13 @@ function Daily() {
                         </li>
                     );
                 })
-                : <>loading..</>
             }
            
             
           </ul>
           <div className="tab-content" id="myTabContent">
           {
-                weekly ? weekly.map((f,index) => {
+                weekly && weekly.map((f,index) => {
                     return ( // Explicitly return the JSX
                         <div key={`neikn${index}`} className={`tab-pane fade ${index==0?"show active":""}`} id={`home-${index}`} role="tabpanel" aria-labelledby={`home-tab-${index}`}>
                             <div className="comon-report-divbn">
@@ -207,7 +206,6 @@ function Daily() {
                         </div>
                     );
                 })
-                : <>loading..</>
             }
             
             

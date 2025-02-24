@@ -13,7 +13,7 @@ function Main() {
   return (
     <section className="float-start w-100 banner-part1">
         {
-            data ?
+            data &&
             <div className="container">
                 <div className="row top-part-banner1 align-items-center">
                    
@@ -120,7 +120,7 @@ function Main() {
                             }}
                             >
                                 {
-                                hourly ? hourly.map((f,index) => {
+                                hourly && hourly.map((f,index) => {
                                     if(f.time ){
                                         return ( // Explicitly return the JSX
                                             <SwiperSlide key={f.time}> 
@@ -153,8 +153,6 @@ function Main() {
                                     }
                                     
                                 })
-                                : <>loading..</>
-                                
                                 }
                              
                             
@@ -164,8 +162,6 @@ function Main() {
                 </div>
                 
             </div>
-            :
-            <>loading..</>
         }
       
     </section>

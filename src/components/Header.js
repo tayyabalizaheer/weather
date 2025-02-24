@@ -1,10 +1,20 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 function Header() {
+  const {selectedlocation,error} = useSelector((state) => state.location);
+console.log("location-error",error);
+
   return (
     <>
+        {
+            error ? (
+                <div className='bg-warning px-5 py-2 text-center'>Location access denied. Enable permissions for accurate weather updates.</div>
+            ):<></>
+        
+        }
         <header className="float-start w-100">
             <div className="top-bar">
             

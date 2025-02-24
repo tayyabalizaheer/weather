@@ -20,11 +20,11 @@ const locationSlice = createSlice({
     }
     ,
     setError: (state, action) => {
-        state.loading = action.payload;
+        state.error = action.payload;
     }
     ,
     setSlug: (state, action) => {
-        state.loading = action.payload;
+        state.slug = action.payload;
     }
   },
 });

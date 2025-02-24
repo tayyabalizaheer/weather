@@ -5,7 +5,7 @@ const initialState = {
   data: null,
   weekly: null,
   today: null,
-  loading : false
+  loading : true
 };
 
 const weatherSlice = createSlice({

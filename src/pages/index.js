@@ -5,6 +5,7 @@ import React, { useEffect } from 'react'
 import Home from './home';
 import { useDispatch, useSelector } from 'react-redux';
 import { setError, setSelectedlocation } from '@/store/slices/locationSlice';
+import { setLoading } from '@/store/slices/weatherSlice';
 
 
 
@@ -25,6 +26,7 @@ function HomePage({slug}) {
         }));
       },
       (error) => {
+        console.log("location-error.message",error.message);
         dispatch(setError(error.message));
         dispatch(setSelectedlocation({
           lat: 33.1833, 
